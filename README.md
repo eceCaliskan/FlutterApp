@@ -1,4 +1,7 @@
-![Screenshot_1626000991](https://user-images.githubusercontent.com/60359037/125196466-c255b000-e262-11eb-9086-093a2de89571.png)
+![Screenshot_1626000991](https://user-images.githubusercontent.com/60359037/125196498-ea451380-e262-11eb-82eb-8bafefb515d0.png)
+![Screenshot_1626000996](https://user-images.githubusercontent.com/60359037/125196499-eb764080-e262-11eb-8153-67555238397f.png)
+![Screenshot_1626001000](https://user-images.githubusercontent.com/60359037/125196501-eca76d80-e262-11eb-988f-326751fbf260.png)
+
 # socialmediapp
 
 A new Flutter application.
