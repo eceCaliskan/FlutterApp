@@ -13,24 +13,27 @@ import 'login_state.dart';
 ///2021
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  UserRepository _userRepository;
+  late UserRepository _userRepository;
 
-  LoginBloc({
-    required UserRepository userRepository,
-  })  : assert(userRepository != null),
-        _userRepository = userRepository, super(null);
+  LoginBloc(LoginState initialState) : super(initialState);
+
 
   @override
   // TODO: implement initialState
-  LoginState get initialState =>  //setting the initial state
+ //setting the initial state
 
-  @override
+
   //gettting the events to call the corresponding methods. The methods are used
   //to convert the return the state
-  Stream<LoginState> mapEventToState(LoginEvent event) async* {
 
+
+
+
+  @override
+  Stream<LoginState> mapEventToState(LoginEvent event) {
+    // TODO: implement mapEventToState
+    throw UnimplementedError();
   }
-
   ///checks the validity of the email with [email]
   Stream<LoginState> _mapEmailChangedToState() async* {
 
@@ -40,6 +43,5 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Stream<LoginState> _mapPasswordChangedState() async* {
 
   }
-
 
 }
