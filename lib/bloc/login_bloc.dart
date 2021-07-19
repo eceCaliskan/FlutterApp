@@ -1,7 +1,4 @@
-
-
 import 'package:bloc/bloc.dart';
-
 import '../database.dart';
 import 'login_event.dart';
 import 'login_state.dart';
@@ -17,8 +14,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   @override
   LoginState get initialState => LoginState.empty();
-
-
 
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:socialmediapp/login.dart';
 import 'Icon/my_flutter_app_icons.dart';
 
 class Register extends StatefulWidget {
@@ -13,13 +15,29 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Login()),
+                  );
+                },
+                icon: Icon(
+                  Icons.arrow_back_rounded,
+                )),
+          ],
+          iconTheme: IconThemeData(color: Colors.black),
+        ),
         backgroundColor: Colors.white,
         body: Center(
           child: Container(
             width: MediaQuery.of(context).size.width / 1.4,
             child: ListView(
               children: [
-                SizedBox(height: MediaQuery.of(context).size.width / 3),
+                SizedBox(height: MediaQuery.of(context).size.width / 6),
                 SizedBox(width: MediaQuery.of(context).size.width / 3),
                 Container(
                   child: Image.asset(
@@ -30,12 +48,12 @@ class _RegisterState extends State<Register> {
                 Center(
                   child: Container(
                       child: Text(
-                        "Register",
-                        style: TextStyle(
-                            color: Colors.orange,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 35),
-                      )),
+                    "Register",
+                    style: TextStyle(
+                        color: Colors.orange,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 35),
+                  )),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.width / 10),
                 Container(
@@ -100,17 +118,16 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.width / 5,
+                  height: MediaQuery.of(context).size.width / 15,
                   child: Center(
                     child: RichText(
                         text: TextSpan(
-                          text: "Create an account",
-                          style: TextStyle(
-                              color: Colors.black45,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                        )
-                    ),
+                      text: "Do you have an account? Login",
+                      style: TextStyle(
+                          color: Colors.black45,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15),
+                    )),
                   ),
                 ),
               ],
