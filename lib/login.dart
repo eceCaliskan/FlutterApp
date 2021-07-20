@@ -4,11 +4,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:socialmediapp/bloc/login_state.dart';
 import 'package:socialmediapp/register.dart';
 import 'Icon/my_flutter_app_icons.dart';
 import 'bloc/login_bloc.dart';
 import 'bloc/login_event.dart';
 import 'database.dart';
+import 'home.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -27,6 +29,12 @@ class _LoginState extends State<Login> {
     return BlocBuilder(
       bloc: _loginbloc,
       builder: (BuildContext context, state) {
+        if(state is LoginSuccess){
+          Future.delayed(const Duration(milliseconds: 500), () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (BuildContext context) => Home()));
+          }
+          );  }
         return MaterialApp(
           home: Scaffold(
             backgroundColor: Colors.white,
