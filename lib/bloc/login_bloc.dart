@@ -10,10 +10,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({
     required UserRepository userRepository,
   })  : assert(userRepository != null),
-        _userRepository = userRepository, super(LoginState.empty());
+        _userRepository = userRepository, super(LoginEmpty());
 
   @override
-  LoginState get initialState => LoginState.empty();
+  LoginState get initialState => LoginEmpty();
 
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
@@ -29,12 +29,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     required String email,
     required String password,
   }) async* {
-    yield LoginState.loading();
+    yield LoginLoading();
     try {
       await _userRepository.signInWithCredentials(email, password);
-      yield LoginState.success();
+      yield LoginSuccess(email: email, password: password);
     } catch (_) {
-      yield LoginState.failure();
+      yield LoginFailure();
     }
   }
 }
