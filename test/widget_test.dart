@@ -8,8 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:socialmediapp/main.dart';
-import 'package:socialmediapp/welcome.dart';
+import 'package:socialmediapp/ui/main.dart';
+import 'package:socialmediapp/ui/welcome.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

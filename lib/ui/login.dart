@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:socialmediapp/bloc/login_state.dart';
-import 'package:socialmediapp/register.dart';
-import 'Icon/my_flutter_app_icons.dart';
-import 'bloc/login_bloc.dart';
-import 'bloc/login_event.dart';
-import 'database.dart';
+import 'package:socialmediapp/ui/register.dart';
+import '../Icon/my_flutter_app_icons.dart';
+import '../bloc/login_bloc.dart';
+import '../bloc/login_event.dart';
+import '../services/database.dart';
 import 'home.dart';
 
 class Login extends StatefulWidget {

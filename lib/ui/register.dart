@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:socialmediapp/login.dart';
-import 'Icon/my_flutter_app_icons.dart';
+import 'package:socialmediapp/ui/login.dart';
+import '../Icon/my_flutter_app_icons.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
