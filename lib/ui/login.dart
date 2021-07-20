@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,12 +30,36 @@ class _LoginState extends State<Login> {
     return BlocBuilder(
       bloc: _loginbloc,
       builder: (BuildContext context, state) {
-        if(state is LoginSuccess){
+        if (state is LoginSuccess) {
           Future.delayed(const Duration(milliseconds: 500), () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (BuildContext context) => Home()));
-          }
-          );  }
+          });
+        }
+        else if (state is LoginFailure) {
+          return Container(
+            color: Colors.white,
+            child: CupertinoAlertDialog(
+              title: Text("Login Filure"),
+              content: Text("There is a failure while logging into the account. Please register or check the details"),
+        actions: [
+            CupertinoDialogAction( child: RichText(
+                text: TextSpan(
+                    text: "Create an account",
+                    style: TextStyle(
+                        color: Colors.black45,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () => Navigator.push(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.leftToRight,
+                              child: Register())))),),
+              ],
+            ),
+          );
+        }
         return MaterialApp(
           home: Scaffold(
             backgroundColor: Colors.white,
