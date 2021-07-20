@@ -1,26 +1,20 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-
-
 @immutable
 abstract class LoginState extends Equatable {
   LoginState([List props = const []]) : super();
 }
 
 class LoginEmpty extends LoginState {
-
   LoginEmpty() : super();
 
   @override
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
-
 }
 
 class LoginLoading extends LoginState {
-
-
   LoginLoading() : super();
 
   @override
@@ -56,4 +50,3 @@ class LoginFailure extends LoginState {
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
 }
-

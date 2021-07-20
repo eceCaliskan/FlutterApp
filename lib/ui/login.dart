@@ -1,15 +1,15 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:socialmediapp/bloc/login_state.dart';
+import 'package:socialmediapp/bloc/login/login_state.dart';
 import 'package:socialmediapp/ui/register.dart';
 import '../Icon/my_flutter_app_icons.dart';
-import '../bloc/login_bloc.dart';
-import '../bloc/login_event.dart';
+import '../bloc/login/login_bloc.dart';
+import '../bloc/login/login_event.dart';
 import '../services/database.dart';
 import 'home.dart';
 
@@ -43,7 +43,8 @@ class _LoginState extends State<Login> {
               title: Text("Login Filure"),
               content: Text("There is a failure while logging into the account. Please register or check the details"),
         actions: [
-            CupertinoDialogAction( child: RichText(
+            CupertinoDialogAction(
+              child: RichText(
                 text: TextSpan(
                     text: "Create an account",
                     style: TextStyle(
@@ -51,11 +52,8 @@ class _LoginState extends State<Login> {
                         fontWeight: FontWeight.bold,
                         fontSize: 15),
                     recognizer: TapGestureRecognizer()
-                      ..onTap = () => Navigator.push(
-                          context,
-                          PageTransition(
-                              type: PageTransitionType.leftToRight,
-                              child: Register())))),),
+                      ..onTap = () => Navigator.push(context,
+                          MaterialPageRoute(builder: (BuildContext context) => Login()))))),
               ],
             ),
           );
