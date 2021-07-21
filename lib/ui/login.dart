@@ -5,6 +5,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:socialmediapp/bloc/authenticate/authenticate_bloc.dart';
+import 'package:socialmediapp/bloc/authenticate/authenticate_event.dart';
 import 'package:socialmediapp/bloc/login/login_state.dart';
 import 'package:socialmediapp/ui/register.dart';
 import '../Icon/my_flutter_app_icons.dart';
@@ -24,6 +26,7 @@ class _LoginState extends State<Login> {
   TextEditingController textController = TextEditingController();
   TextEditingController textController2 = TextEditingController();
   LoginBloc _loginbloc = LoginBloc(userRepository: _userRepository);
+  AuthenticationBloc _authenticationBloc = AuthenticationBloc(userRepository: _userRepository);
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +34,7 @@ class _LoginState extends State<Login> {
       bloc: _loginbloc,
       builder: (BuildContext context, state) {
         if (state is LoginSuccess) {
+         // BlocProvider.of<AuthenticationBloc>(context).add(Authenticate(email: textController.text, password: textController2.text));
           Future.delayed(const Duration(milliseconds: 500), () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (BuildContext context) => Home()));

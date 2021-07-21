@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:socialmediapp/ui/authenticate.dart';
 import 'login.dart';
 
 class Welcome extends StatefulWidget {
@@ -51,7 +52,7 @@ class _WelcomeState extends State<Welcome> with SingleTickerProviderStateMixin {
                 child: Image.asset('assets/world2.jpg'),
                 onPressed: () {
                   Navigator.push(context, PageTransition(
-                      type: PageTransitionType.leftToRight, child: Login()));
+                      type: PageTransitionType.leftToRight, child: Authenticate()));
                 },
               ),
             ),
