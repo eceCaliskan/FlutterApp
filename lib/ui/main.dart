@@ -10,6 +10,6 @@ void main() {
   //FirebaseAuth _firebaseAuth; //defining the firebase
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp();
-  runApp(MaterialApp(debugShowCheckedModeBanner: false,home:Welcome()));
+  runApp(MaterialApp(debugShowCheckedModeBanner: false,home: Welcome()));
 }
 

@@ -8,16 +8,15 @@ abstract class AuthenticateEvent extends Equatable {
 
 
 
-class Authenticate extends AuthenticateEvent {
-  final String email;
-  final String password;
+class Authenticate1 extends AuthenticateEvent {
 
-  Authenticate({required this.email, required this.password})
-      : super([email, password]);
+
+  Authenticate1()
+      : super();
 
   @override
   String toString() {
-    return 'Submitted { email: $email, password: $password }';
+    return 'Submitted { }';
   }
 
   @override

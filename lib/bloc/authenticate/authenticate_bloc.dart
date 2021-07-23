@@ -17,9 +17,9 @@ class AuthenticationBloc extends Bloc<AuthenticateEvent, AuthenticateState>{
 
   @override
   Stream<AuthenticateState> mapEventToState(AuthenticateEvent event) async* {
-    if(event is Authenticate)
+    if(event is Authenticate1)
     {
-      yield* _mapAuthenticateToState(event.email, event.password );
+      yield* _mapAuthenticateToState( );
     }
     else if (event is UnAuthenticate)
     {
@@ -27,8 +27,8 @@ class AuthenticationBloc extends Bloc<AuthenticateEvent, AuthenticateState>{
     }
   }
 
-  Stream<AuthenticateState> _mapAuthenticateToState(email, password) async* {
-    yield AuthenticateSuccess(email: email, password: password);
+  Stream<AuthenticateState> _mapAuthenticateToState() async* {
+    yield AuthenticateSuccess();
   }
 
   Stream<AuthenticateState> _mapUnauthenticateToState() async* {

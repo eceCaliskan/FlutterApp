@@ -26,19 +26,22 @@ class _LoginState extends State<Login> {
   TextEditingController textController = TextEditingController();
   TextEditingController textController2 = TextEditingController();
   LoginBloc _loginbloc = LoginBloc(userRepository: _userRepository);
-  AuthenticationBloc _authenticationBloc = AuthenticationBloc(userRepository: _userRepository);
+  AuthenticationBloc _authenticationBloc= AuthenticationBloc(userRepository: _userRepository);
+
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder(
       bloc: _loginbloc,
-      builder: (BuildContext context, state) {
+      builder: (BuildContext context, state)  {
         if (state is LoginSuccess) {
-         // BlocProvider.of<AuthenticationBloc>(context).add(Authenticate(email: textController.text, password: textController2.text));
+           BlocProvider.of<AuthenticationBloc>(context).add(Authenticate1());
           Future.delayed(const Duration(milliseconds: 500), () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (BuildContext context) => Home()));
-          });
+          }
+          );
+
         }
         else if (state is LoginFailure) {
           return Container(

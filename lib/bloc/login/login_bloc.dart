@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:socialmediapp/bloc/authenticate/authenticate_state.dart';
 import '../../services/database.dart';
 import 'login_event.dart';
 import 'login_state.dart';

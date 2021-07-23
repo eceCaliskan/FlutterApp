@@ -15,15 +15,14 @@ class AuthenticateEmpty extends AuthenticateState {
 }
 
 class AuthenticateSuccess extends AuthenticateState {
-  final String email;
-  final String password;
 
-  AuthenticateSuccess({required this.email, required this.password})
-      : super([email, password]);
+
+  AuthenticateSuccess()
+      : super();
 
   @override
   String toString() {
-    return 'Submitted { email: $email, password: $password }';
+    return 'Submitted { }';
   }
 
   @override

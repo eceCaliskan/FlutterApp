@@ -52,7 +52,7 @@ class _WelcomeState extends State<Welcome> with SingleTickerProviderStateMixin {
                 child: Image.asset('assets/world2.jpg'),
                 onPressed: () {
                   Navigator.push(context, PageTransition(
-                      type: PageTransitionType.leftToRight, child: Authenticate()));
+                      type: PageTransitionType.leftToRight, child:Authenticate()));
                 },
               ),
             ),
