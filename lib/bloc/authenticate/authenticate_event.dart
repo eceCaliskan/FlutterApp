@@ -8,10 +8,10 @@ abstract class AuthenticateEvent extends Equatable {
 
 
 
-class Authenticate1 extends AuthenticateEvent {
+class Auth extends AuthenticateEvent {
 
 
-  Authenticate1()
+  Auth()
       : super();
 
   @override

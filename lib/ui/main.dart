@@ -7,7 +7,7 @@ import 'package:socialmediapp/ui/welcome.dart';
 
 
 void main() {
-  //FirebaseAuth _firebaseAuth; //defining the firebase
+  FirebaseAuth _firebaseAuth; //defining the firebase
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp();
   runApp(MaterialApp(debugShowCheckedModeBanner: false,home: Welcome()));
