@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-abstract class Register extends Equatable{
-  Register([List probs = const[]]): super();
+abstract class RegisterEvent extends Equatable{
+  RegisterEvent([List probs = const[]]): super();
 }
 
-class RegistertoApp extends Register{
+class RegistertoApp extends RegisterEvent{
   String email;
   String password;
   String username;
