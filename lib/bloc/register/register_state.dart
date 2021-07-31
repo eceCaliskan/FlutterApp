@@ -15,3 +15,9 @@ class RegisterFailure extends ResisterState{
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
 }
+
+class EmptyRegister extends ResisterState{
+  @override
+  // TODO: implement props
+  List<Object?> get props => throw UnimplementedError();
+}

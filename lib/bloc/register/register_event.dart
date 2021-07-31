@@ -5,11 +5,11 @@ abstract class RegisterEvent extends Equatable{
 }
 
 class RegistertoApp extends RegisterEvent{
+  String username;
   String email;
   String password;
-  String username;
 
-  RegistertoApp(this.email, this.password, this.username) : super([email, password, username]);
+  RegistertoApp(this.username, this.email, this.password) : super([username, email, password]);
 
   @override
   // TODO: implement props
