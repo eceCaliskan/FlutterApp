@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserRepository {
   final FirebaseAuth _firebaseAuth;
-   FirebaseFirestore ?_firestore;
+  final firestoreInstance = FirebaseFirestore.instance; //defining the instance
 
   UserRepository({FirebaseAuth? firebaseAuth})
       : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
@@ -16,9 +16,9 @@ class UserRepository {
     );
   }
 
-  Future<void> addtoDatabase(String username) async {
+  Future <void> addtoDatabase(String username)   {
     var userUid =  _firebaseAuth.currentUser!.uid;
-    _firestore!.collection('Users').doc(userUid).set({"username ": username});
+    return firestoreInstance.collection('Users').doc(userUid).set({"username ": username});
   }
 
   Future<UserCredential> signUp(

@@ -39,7 +39,7 @@ class _RegisterState extends State<Register> {
      bloc: _registerBloc,
       builder: (BuildContext context, state) {
        if(state is RegisterSuccess){
-         BlocProvider.of<AuthenticationBloc>(context).add(Auth());
+         //BlocProvider.of<AuthenticationBloc>(context).add(Auth());
          Future.delayed(const Duration(milliseconds: 500), () {
            Navigator.push(context,
                MaterialPageRoute(builder: (BuildContext context) => Home()));
