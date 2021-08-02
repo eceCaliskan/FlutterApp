@@ -19,11 +19,11 @@ class Authenticate extends StatelessWidget {
         child: BlocBuilder<AuthenticationBloc, AuthenticateState>(
           builder: (BuildContext context, state) {
             if (state is AuthenticateSuccess) {
+              print("----------------------------------------------Authenticate success");
                return Home();
-                print("ok");
-
             } else if (state is AuthenticateFailure ||
                 state is AuthenticateEmpty) {
+              print("----------------------------------------------Authenticate failure");
               return Login();
             }
             return Home();
