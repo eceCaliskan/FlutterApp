@@ -98,10 +98,7 @@ class _RegisterState extends State<Register> {
                                  fontSize: 35),
                            )),
                      ),
-                     SizedBox(height: MediaQuery
-                         .of(context)
-                         .size
-                         .width / 10),
+
                      Container(
                        child: TextField(
                          controller: textController,
@@ -141,6 +138,20 @@ class _RegisterState extends State<Register> {
                            .of(context)
                            .size
                            .width / 13,
+                     ),
+                     FloatingActionButton(
+                       backgroundColor: Colors.white,
+                       child: Text(
+                         "Login",
+                         style: TextStyle(color: Colors.orange),
+                       ),
+                       onPressed: () {
+                         _registerBloc.add(RegistertoApp(
+                              textController.text,
+                              textController2.text,
+                              textController3.text
+                         ));
+                       },
                      ),
                      Container(
                        child: Row(
@@ -193,6 +204,10 @@ class _RegisterState extends State<Register> {
                              )),
                        ),
                      ),
+
+
+
+
                    ],
                  ),
                ),
