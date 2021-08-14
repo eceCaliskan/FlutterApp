@@ -10,15 +10,17 @@ class AdddedToTheDatabase extends PostState {
   List<Object?> get props => throw UnimplementedError();
 }
 
-class ReturnedFromTheDatabase extends PostState {
- List postList;
-
- ReturnedFromTheDatabase(this.postList) : super([postList]);
-
-
+class EmptyPost extends PostState {
   @override
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
+}
 
 
+class ReturnedFromTheDatabase extends PostState {
+ List postList;
+ ReturnedFromTheDatabase(this.postList) : super([postList]);
+  @override
+  // TODO: implement props
+  List<Object?> get props => throw UnimplementedError();
 }
