@@ -21,6 +21,14 @@ class UserRepository {
     return firestoreInstance.collection('Users').doc(userUid).set({"username ": username});
   }
 
+  Future <void> addPosttoDatabase(String post)   {
+    var userUid =  _firebaseAuth.currentUser!.uid;
+    var username = returnUsername();
+
+    return firestoreInstance.collection('post').doc(userUid).set({"post ": post });
+  }
+
+
   Future<UserCredential> signUp(
       {required String email, required String password}) async {
     return await _firebaseAuth.createUserWithEmailAndPassword(
@@ -29,6 +37,15 @@ class UserRepository {
 
   Future<void> signOut() async {
     _firebaseAuth.signOut();
+  }
+
+  Future<void> returnUsername() async {
+
+      var userUid =  _firebaseAuth.currentUser!.uid;
+
+      DocumentSnapshot snapshot = await firestoreInstance.collection('users').doc(userUid).get();
+     return snapshot.get('username'); //you can get any field value you want by writing the exact fieldName in the data[fieldName]
+
   }
 
   Future<bool> isSignedIn() async {
