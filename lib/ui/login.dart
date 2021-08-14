@@ -35,7 +35,7 @@ class _LoginState extends State<Login> {
       bloc: _loginbloc,
       builder: (BuildContext context, state)  {
         if (state is LoginSuccess) {
-           BlocProvider.of<AuthenticationBloc>(context).add(Auth());
+          BlocProvider.of<AuthenticationBloc>(context).add(Auth());
           Future.delayed(const Duration(milliseconds: 500), () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (BuildContext context) => Home()));

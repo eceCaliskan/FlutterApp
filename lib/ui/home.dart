@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socialmediapp/ui/post.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class Home extends StatefulWidget {
@@ -13,10 +14,8 @@ class _Home extends State<Home> {
      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
      static List<Widget> _widgetOptions = <Widget>[
-          Container(color: Colors.red),
-          Container(color: Colors.pink),
-          Container(color: Colors.yellow),
-          Container(color: Colors.red),
+          Post(),
+
      ];
 
     void _onItemTapped(int index) {
