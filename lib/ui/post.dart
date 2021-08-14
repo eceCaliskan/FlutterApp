@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialmediapp/bloc/post/post_bloc.dart';
+import 'package:socialmediapp/bloc/post/post_event.dart';
 import 'package:socialmediapp/bloc/post/post_state.dart';
 import 'package:socialmediapp/services/database.dart';
 
@@ -18,6 +19,7 @@ class Post extends StatefulWidget{
 
 
 class _Post extends State<Post> {
+  TextEditingController textController = TextEditingController();
   UserRepository _userRepository = UserRepository();
 
 
@@ -36,13 +38,13 @@ class _Post extends State<Post> {
             }
             );
           }
-
           return Scaffold(
             body: ListView(
               children: <Widget>[
                 Container(
                   color: Colors.white,
                   child: TextField(
+                    controller: textController,
                     minLines: 1,
                     maxLines: 10,
                     decoration: InputDecoration(
@@ -53,6 +55,9 @@ class _Post extends State<Post> {
                       hintText: "Enter your post",
                     ),
                   ),
+                ),
+                FloatingActionButton(
+                    onPressed: () {_postBloc.add(AddPost(textController.text));}
                 ),
                 Container(
                   height: MediaQuery
@@ -65,11 +70,8 @@ class _Post extends State<Post> {
                 ),
               ],
             ),
-
           );
         }
     );
-
-
   }
 }
