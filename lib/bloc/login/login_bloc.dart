@@ -5,12 +5,12 @@ import 'login_event.dart';
 import 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  UserRepository _userRepository;
+  UserDatabase _userRepository;
 
   LoginBloc({
-    required UserRepository userRepository,
-  })  : assert(userRepository != null),
-        _userRepository = userRepository, super(LoginEmpty());
+    required UserDatabase userDatabase,
+  })  : assert(userDatabase != null),
+        _userRepository = userDatabase, super(LoginEmpty());
 
   @override
   LoginState get initialState => LoginEmpty();

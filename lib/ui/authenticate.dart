@@ -7,7 +7,7 @@ import 'home.dart';
 import 'login.dart';
 
 class Authenticate extends StatelessWidget {
-  UserRepository _userRepository = UserRepository();
+  UserDatabase _userRepository = UserDatabase();
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class Authenticate extends StatelessWidget {
       onWillPop: () async => false,
       child: BlocProvider(
         create: (BuildContext context) =>
-            AuthenticationBloc(userRepository: _userRepository),
+            AuthenticationBloc(userDatabase: _userRepository),
         child: BlocBuilder<AuthenticationBloc, AuthenticateState>(
           builder: (BuildContext context, state) {
             if (state is AuthenticateSuccess) {

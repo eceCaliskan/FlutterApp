@@ -23,15 +23,15 @@ class _RegisterState extends State<Register> {
   TextEditingController textController = TextEditingController();
   TextEditingController textController2 = TextEditingController();
   TextEditingController textController3 = TextEditingController();
-  UserRepository _userRepository = UserRepository();
+  UserDatabase _userRepository = UserDatabase();
 
 
 
 
   @override
   Widget build(BuildContext context) {
-    RegisterBloc _registerBloc= RegisterBloc(userRepository: _userRepository);
-    AuthenticationBloc _authenticationBloc= AuthenticationBloc(userRepository: _userRepository);
+    RegisterBloc _registerBloc= RegisterBloc(userDatabase: _userRepository);
+    AuthenticationBloc _authenticationBloc= AuthenticationBloc(userDatabase: _userRepository);
 
     return BlocBuilder(
 

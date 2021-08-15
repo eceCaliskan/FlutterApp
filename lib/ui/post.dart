@@ -18,7 +18,7 @@ class Post extends StatefulWidget {
 
 class _Post extends State<Post> {
   TextEditingController textController = TextEditingController();
-  UserRepository _userRepository = UserRepository();
+  UserDatabase _userRepository = UserDatabase();
 
   @override
   Widget build(BuildContext context) {

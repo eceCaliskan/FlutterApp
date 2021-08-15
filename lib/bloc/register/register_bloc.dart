@@ -4,12 +4,12 @@ import 'package:socialmediapp/bloc/register/register_state.dart';
 import 'package:socialmediapp/services/database.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, ResisterState> {
-  UserRepository _userRepository;
+  UserDatabase _userRepository;
 
   RegisterBloc({
-    required UserRepository userRepository,
-  })  : assert(userRepository != null),
-        _userRepository = userRepository, super(EmptyRegister());
+    required UserDatabase userDatabase,
+  })  : assert(userDatabase != null),
+        _userRepository = userDatabase, super(EmptyRegister());
 
 
   @override

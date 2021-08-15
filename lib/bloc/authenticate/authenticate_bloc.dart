@@ -7,12 +7,12 @@ import 'package:socialmediapp/services/database.dart';
 import 'authenticate_state.dart';
 
 class AuthenticationBloc extends Bloc<AuthenticateEvent, AuthenticateState>{
-  UserRepository _userRepository;
+  UserDatabase _userRepository;
 
   AuthenticationBloc({
-    required UserRepository userRepository,
-  })  : assert(userRepository != null),
-        _userRepository = userRepository, super(AuthenticateEmpty());
+    required UserDatabase userDatabase,
+  })  : assert(userDatabase != null),
+        _userRepository = userDatabase, super(AuthenticateEmpty());
 
 
   @override
