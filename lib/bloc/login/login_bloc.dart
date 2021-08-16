@@ -6,11 +6,12 @@ import 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   UserDatabase _userRepository;
+  PostDatabase _userDatabase;
 
   LoginBloc({
-    required UserDatabase userDatabase,
-  })  : assert(userDatabase != null),
-        _userRepository = userDatabase, super(LoginEmpty());
+    required UserDatabase userDatabase, required PostDatabase postDatabase
+  })  : assert(userDatabase != null, postDatabase != null),
+        _userRepository = userDatabase, _userDatabase = postDatabase, super(LoginEmpty());
 
   @override
   LoginState get initialState => LoginEmpty();
@@ -32,7 +33,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     yield LoginLoading();
     try {
       await _userRepository.signInWithCredentials(email, password);
-      _userRepository.addPosttoDatabase("helo");
+      _userDatabase.addPosttoDatabase("helo");
       yield LoginSuccess(email: email, password: password);
     } catch (_) {
       yield LoginFailure();

@@ -4,12 +4,12 @@ import 'package:socialmediapp/bloc/post/post_state.dart';
 import 'package:socialmediapp/services/database.dart';
 
 class PostBloc extends Bloc<PostEvent, PostState> {
-  UserDatabase _userRepository;
+  PostDatabase _userRepository;
 
   PostBloc({
-    required UserDatabase userRepository,
-  })  : assert(userRepository != null),
-        _userRepository = userRepository,
+    required PostDatabase postDatabase,
+  })  : assert(postDatabase != null),
+        _userRepository = postDatabase,
         super(EmptyPost());
 
   @override

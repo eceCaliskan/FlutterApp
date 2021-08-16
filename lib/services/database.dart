@@ -12,7 +12,6 @@ class UserRepository {
 
 class UserDatabase {
   var _firebaseAuth = UserRepository()._firebaseAuth;
-
   var firestoreInstance = UserRepository()._firestoreInstance;
 
   UserDatabase({firebaseAuth, firestoreInstance});
@@ -30,16 +29,6 @@ class UserDatabase {
         .collection('Users')
         .doc(userUid)
         .set({"username ": username});
-  }
-
-  Future<void> addPosttoDatabase(String post) {
-    var userUid = _firebaseAuth.currentUser!.uid;
-    var username = returnUsername();
-
-    return firestoreInstance
-        .collection('post')
-        .doc(userUid)
-        .set({"post ": post});
   }
 
   Future<UserCredential> signUp(
@@ -68,5 +57,22 @@ class UserDatabase {
 
   Future<String?> getUser() async {
     return (await _firebaseAuth.currentUser)!.email;
+  }
+}
+
+class PostDatabase {
+  var _firebaseAuth = UserRepository()._firebaseAuth;
+  var firestoreInstance = UserRepository()._firestoreInstance;
+
+  PostDatabase({firebaseAuth, firestoreInstance});
+
+  Future<void> addPosttoDatabase(String post) {
+    var userUid = _firebaseAuth.currentUser!.uid;
+    var username = UserDatabase().returnUsername();
+
+    return firestoreInstance
+        .collection('post')
+        .doc(userUid)
+        .set({"post ": post});
   }
 }

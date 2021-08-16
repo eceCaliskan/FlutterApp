@@ -18,11 +18,11 @@ class Post extends StatefulWidget {
 
 class _Post extends State<Post> {
   TextEditingController textController = TextEditingController();
-  UserDatabase _userRepository = UserDatabase();
+  PostDatabase _userRepository = PostDatabase();
 
   @override
   Widget build(BuildContext context) {
-    PostBloc _postBloc = new PostBloc(userRepository: _userRepository);
+    PostBloc _postBloc = new PostBloc( postDatabase: _userRepository);
 
     return BlocBuilder(
         bloc: _postBloc,

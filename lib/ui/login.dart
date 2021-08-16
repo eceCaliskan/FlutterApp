@@ -21,11 +21,12 @@ class Login extends StatefulWidget {
 }
 
 UserDatabase _userRepository = UserDatabase();
+PostDatabase _postDatabase =PostDatabase();
 
 class _LoginState extends State<Login> {
   TextEditingController textController = TextEditingController();
   TextEditingController textController2 = TextEditingController();
-  LoginBloc _loginbloc = LoginBloc(userDatabase: _userRepository);
+  LoginBloc _loginbloc = LoginBloc(userDatabase: _userRepository, postDatabase: _postDatabase);
   AuthenticationBloc _authenticationBloc= AuthenticationBloc(userDatabase: _userRepository);
 
 
