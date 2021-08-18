@@ -24,7 +24,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   Stream<PostState> _mapPosttoState(String post) async*{
 
     _userRepository.addPosttoDatabase(post);
-    String postList = _userRepository.getData() as String;
+    final postList = await _userRepository.getData();
     yield ReturnedFromTheDatabase(postList);
   }
 

@@ -83,7 +83,8 @@ class PostDatabase {
 
     DocumentSnapshot snapshot =
     await firestoreInstance.collection('post').doc('Bm4II4drHTfkPfrvOX76WNn6Mry1').get();
-    return snapshot.get(
+    String post = snapshot.get(
         'post');
+    return post;
   }
   }

@@ -18,7 +18,7 @@ class EmptyPost extends PostState {
 
 
 class ReturnedFromTheDatabase extends PostState {
- String postList;
+ final postList;
 
  ReturnedFromTheDatabase(this.postList) : super([postList]);
   @override
