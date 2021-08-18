@@ -14,8 +14,10 @@ class AddPost extends PostEvent{
 }
 
 class ReturnPost extends PostEvent {
-  List postList;
-  ReturnPost(this.postList): super([postList]);
+ // List postList;
+ // ReturnPost(this.postList): super([postList]);
+
+  ReturnPost() : super();
 
   @override
   // TODO: implement props

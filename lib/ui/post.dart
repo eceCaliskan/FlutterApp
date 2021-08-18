@@ -5,6 +5,7 @@ import 'package:socialmediapp/bloc/post/post_bloc.dart';
 import 'package:socialmediapp/bloc/post/post_event.dart';
 import 'package:socialmediapp/bloc/post/post_state.dart';
 import 'package:socialmediapp/services/database.dart';
+import 'package:socialmediapp/ui/homeField.dart';
 
 import 'home.dart';
 
@@ -22,31 +23,29 @@ class _Post extends State<Post> {
 
   @override
   Widget build(BuildContext context) {
-    PostBloc _postBloc = new PostBloc( postDatabase: _userRepository);
+    PostBloc _postBloc = new PostBloc(postDatabase: _userRepository);
 
     return BlocBuilder(
         bloc: _postBloc,
         builder: (BuildContext context, state) {
-          if (state is AdddedToTheDatabase) {
+          if (state is ReturnedFromTheDatabase) {
             //BlocProvider.of<AuthenticationBloc>(context).add(Auth());
             Future.delayed(const Duration(milliseconds: 500), () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (BuildContext context) => Home()));
+                  MaterialPageRoute(builder: (BuildContext context) => G()));
             });
           }
-          return  ListView(
+          return ListView(
             shrinkWrap: true,
-            
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(bottom: 20.0,top: 15.0, left: 5.0),
-                child: Row(
-                children: <Widget>[
-
-                   Expanded(
-                     flex: 5,
-                     child: Container(
-                     //  padding: EdgeInsets.only(right: ),
+                padding:
+                    const EdgeInsets.only(bottom: 20.0, top: 15.0, left: 5.0),
+                child: Row(children: <Widget>[
+                  Expanded(
+                    flex: 5,
+                    child: Container(
+                      //  padding: EdgeInsets.only(right: ),
                       color: Colors.white,
                       child: TextField(
                         controller: textController,
@@ -54,23 +53,24 @@ class _Post extends State<Post> {
                         maxLines: 10,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white, width: 2.0),
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 2.0),
                           ),
                           hoverColor: Colors.orange,
                           hintText: "Enter your post",
                         ),
                       ),
+                    ),
                   ),
-                   ),
-
-                Expanded(
-                  flex: 1,
-                  child: FloatingActionButton(
-                       child: Icon(Icons.add),
-                      onPressed: () {
-                    _postBloc.add(AddPost(textController.text));
-                  }),
-                ),
+                  Expanded(
+                    flex: 1,
+                    child: FloatingActionButton(
+                        child: Icon(Icons.add),
+                        onPressed: () {
+                          _postBloc.add(AddPost(textController.text));
+                          //_postBloc.add(ReturnPost());
+                        }),
+                  ),
                 ]),
               ),
               ListView.builder(
@@ -86,7 +86,8 @@ class _Post extends State<Post> {
                             const ListTile(
                               leading: FlutterLogo(size: 56.0),
                               title: Text('Item 1'),
-                              subtitle: Text('Item 1 subtitle \n jfhjksdhfksdhfksdn\n jdsfnksdnfkjbsd \n\n\n\n\n\n'),
+                              subtitle: Text(
+                                  'Item 1 subtitle \n jfhjksdhfksdhfksdn\n jdsfnksdnfkjbsd \n\n\n\n\n\n'),
                               trailing: Icon(Icons.access_alarm),
                             ),
                           ],

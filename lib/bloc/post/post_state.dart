@@ -18,7 +18,8 @@ class EmptyPost extends PostState {
 
 
 class ReturnedFromTheDatabase extends PostState {
- List postList;
+ String postList;
+
  ReturnedFromTheDatabase(this.postList) : super([postList]);
   @override
   // TODO: implement props

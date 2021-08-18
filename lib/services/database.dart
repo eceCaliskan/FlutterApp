@@ -68,11 +68,22 @@ class PostDatabase {
 
   Future<void> addPosttoDatabase(String post) {
     var userUid = _firebaseAuth.currentUser!.uid;
-    var username = UserDatabase().returnUsername();
 
     return firestoreInstance
         .collection('post')
         .doc(userUid)
-        .set({"post ": post});
+        .update({'post': post});
   }
-}
+
+
+
+  Future<String> getData() async {
+    // Get docs from collection reference
+    String userUid = _firebaseAuth.currentUser!.uid;
+
+    DocumentSnapshot snapshot =
+    await firestoreInstance.collection('post').doc('Bm4II4drHTfkPfrvOX76WNn6Mry1').get();
+    return snapshot.get(
+        'post');
+  }
+  }

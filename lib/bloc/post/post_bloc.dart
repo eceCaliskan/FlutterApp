@@ -17,14 +17,21 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     if (event is AddPost) {
           yield* _mapPosttoState(event.post);
     }
-    else if (event is ReturnedFromTheDatabase) {
-
+    else if (event is ReturnPost) {
+      yield* _mapReturnPosttoState();
     }
   }
   Stream<PostState> _mapPosttoState(String post) async*{
 
     _userRepository.addPosttoDatabase(post);
-    yield AdddedToTheDatabase();
+    String postList = _userRepository.getData() as String;
+    yield ReturnedFromTheDatabase(postList);
+  }
+
+  Stream<PostState> _mapReturnPosttoState() async*{
+
+    String postList = _userRepository.getData() as String;
+    yield ReturnedFromTheDatabase(postList);
   }
 
 }
