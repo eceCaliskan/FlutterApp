@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -44,10 +45,8 @@ class UserDatabase {
   Future<String> returnUsername() async {
     var userUid = _firebaseAuth.currentUser!.uid;
 
-    DocumentSnapshot snapshot = await firestoreInstance
-        .collection('Users')
-        .doc(userUid)
-        .get();
+    DocumentSnapshot snapshot =
+        await firestoreInstance.collection('Users').doc(userUid).get();
 
     String username = snapshot.get('username ');
 
@@ -74,22 +73,19 @@ class PostDatabase {
     var username = await UserDatabase().returnUsername();
     var userUid = _firebaseAuth.currentUser!.uid;
 
-    return firestoreInstance.collection('post').doc(userUid).set({
-      'post': post,
-      'username': username
-    });
+    return firestoreInstance
+        .collection('post')
+        .doc(userUid)
+        .set({'post': post, 'username': username});
   }
 
   Future<List> getData() async {
-
     var userUid =  _firebaseAuth.currentUser!.uid;
     DocumentSnapshot variable = await firestoreInstance.collection('post').doc(userUid).get();
-    List post=
+    List checkin=
     [
       variable.get('post'),
-      variable.get('username'),
     ];
-    return post;
-
+    return checkin;
   }
 }

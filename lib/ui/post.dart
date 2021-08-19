@@ -28,7 +28,7 @@ class _Post extends State<Post> {
         bloc: _postBloc,
         builder: (BuildContext context, state) {
           if (state is ReturnedFromTheDatabase) {
-            String posts = state.postList;
+            List posts = state.postList;
 
             //BlocProvider.of<AuthenticationBloc>(context).add(Auth());
             //Future.delayed(const Duration(milliseconds: 500), () {
@@ -87,9 +87,9 @@ class _Post extends State<Post> {
                                ListTile(
 
                            leading: Icon(Icons.perm_identity_sharp, size: 60.0,),
-                                title: Text(state.postList[2]),
+                                title: Text(state.postList[0]),
                                 subtitle: Text(
-                                    state.postList[1]),
+                                    state.postList[0]),
                                 trailing: Icon(Icons.add),
                               ),
                             ],
