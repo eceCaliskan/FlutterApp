@@ -28,7 +28,7 @@ class UserDatabase {
     return firestoreInstance
         .collection('Users')
         .doc(userUid)
-        .set({"username ": username});
+        .set({'username ': username});
   }
 
   Future<UserCredential> signUp(
@@ -41,13 +41,17 @@ class UserDatabase {
     _firebaseAuth.signOut();
   }
 
-  Future<void> returnUsername() async {
+  Future<String> returnUsername() async {
     var userUid = _firebaseAuth.currentUser!.uid;
 
-    DocumentSnapshot snapshot =
-        await firestoreInstance.collection('users').doc(userUid).get();
-    return snapshot.get(
-        'username'); //you can get any field value you want by writing the exact fieldName in the data[fieldName]
+    DocumentSnapshot snapshot = await firestoreInstance
+        .collection('Users')
+        .doc(userUid)
+        .get();
+
+    String username = snapshot.get('username ');
+
+    return username; //you can get any field value you want by writing the exact fieldName in the data[fieldName]
   }
 
   Future<bool> isSignedIn() async {
@@ -66,25 +70,26 @@ class PostDatabase {
 
   PostDatabase({firebaseAuth, firestoreInstance});
 
-  Future<void> addPosttoDatabase(String post) {
+  Future<void> addPosttoDatabase(String post) async {
+    var username = await UserDatabase().returnUsername();
     var userUid = _firebaseAuth.currentUser!.uid;
 
-    return firestoreInstance
-        .collection('post')
-        .doc(userUid)
-        .update({'post': post});
+    return firestoreInstance.collection('post').doc(userUid).set({
+      'post': post,
+      'username': username
+    });
   }
 
+  Future<List> getData() async {
 
-
-  Future<String> getData() async {
-    // Get docs from collection reference
-    String userUid = _firebaseAuth.currentUser!.uid;
-
-    DocumentSnapshot snapshot =
-    await firestoreInstance.collection('post').doc('Bm4II4drHTfkPfrvOX76WNn6Mry1').get();
-    String post = snapshot.get(
-        'post');
+    var userUid =  _firebaseAuth.currentUser!.uid;
+    DocumentSnapshot variable = await firestoreInstance.collection('post').doc(userUid).get();
+    List post=
+    [
+      variable.get('post'),
+      variable.get('username'),
+    ];
     return post;
+
   }
-  }
+}

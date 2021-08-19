@@ -30,7 +30,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
 
   Stream<PostState> _mapReturnPosttoState() async*{
 
-    String postList = _userRepository.getData() as String;
+      List postList = _userRepository.getData() as List ;
     yield ReturnedFromTheDatabase(postList);
   }
 

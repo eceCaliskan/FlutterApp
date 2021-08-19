@@ -85,11 +85,12 @@ class _Post extends State<Post> {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                                ListTile(
-                                leading: FlutterLogo(size: 56.0),
-                                title: Text('Item 1'),
+
+                           leading: Icon(Icons.perm_identity_sharp, size: 60.0,),
+                                title: Text(state.postList[2]),
                                 subtitle: Text(
-                                    state.postList),
-                                trailing: Icon(Icons.access_alarm),
+                                    state.postList[1]),
+                                trailing: Icon(Icons.add),
                               ),
                             ],
                           ),
