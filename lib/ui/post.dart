@@ -11,7 +11,6 @@ import 'home.dart';
 
 class Post extends StatefulWidget {
   @override
-  const Post({Key? key}) : super(key: key);
 
   @override
   _Post createState() => _Post();
@@ -29,6 +28,8 @@ class _Post extends State<Post> {
         bloc: _postBloc,
         builder: (BuildContext context, state) {
           if (state is ReturnedFromTheDatabase) {
+            String posts = state.postList;
+
             //BlocProvider.of<AuthenticationBloc>(context).add(Auth());
             //Future.delayed(const Duration(milliseconds: 500), () {
             //Navigator.push(context,
@@ -83,11 +84,11 @@ class _Post extends State<Post> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
-                              const ListTile(
+                               ListTile(
                                 leading: FlutterLogo(size: 56.0),
                                 title: Text('Item 1'),
                                 subtitle: Text(
-                                    'Item 1 subtitle \n jfhjksdhfksdhfksdn\n jdsfnksdnfkjbsd \n\n\n\n\n\n'),
+                                    state.postList),
                                 trailing: Icon(Icons.access_alarm),
                               ),
                             ],
