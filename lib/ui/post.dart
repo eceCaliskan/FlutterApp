@@ -76,7 +76,7 @@ class _Post extends State<Post> {
                 ),
                 ListView.builder(
                     shrinkWrap: true,
-                    itemCount: 5, // the length
+                    itemCount: 10, // the length
                     itemBuilder: (context, index) {
                       return Container(
                         padding: const EdgeInsets.only(bottom: 8),

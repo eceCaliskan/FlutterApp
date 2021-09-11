@@ -1,7 +1,9 @@
 import 'dart:async';
 
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 
 class UserRepository {
   final FirebaseAuth _firebaseAuth;
@@ -80,12 +82,25 @@ class PostDatabase {
   }
 
   Future<List> getData() async {
-    var userUid =  _firebaseAuth.currentUser!.uid;
-    DocumentSnapshot variable = await firestoreInstance.collection('post').doc(userUid).get();
-    List checkin=
-    [
-      variable.get('post'),
-    ];
-    return checkin;
+
+    Map<String, dynamic> l = {};
+
+
+    firestoreInstance.collection("post").get().then((querySnapshot) {
+
+
+      querySnapshot.docs.forEach((value) {
+        l['post'](value.data()['post']);
+        print("post:" + value.data()['post']);
+        print("username" + value.data()['username']);
+
+
+      });});
+
+   return l;
+
   }
-}
+
+
+  }
+
